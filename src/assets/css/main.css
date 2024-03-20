@@ -1,0 +1,75 @@
+:root {
+  --primary: #25628f;
+  --secondary: #f36d38;
+  --thirdColor: #2dbfcd;
+  --bodyBg: #f5f6fa;
+  --whiteColor: #fff;
+  --shadowColor: rgba(100, 100, 111, 0.2);
+  --textColor: #565656;
+  --borderColor: #e6e6e6;
+}
+
+a {
+  text-decoration: none;
+}
+
+.cusBtn {
+  background-color: var(--thirdColor);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--whiteColor);
+  padding: 8px 25px;
+  border-radius: 50px;
+  width: fit-content;
+}
+
+.cusBtn:hover {
+  background-color: var(--secondary);
+}
+
+.form-input {
+  border: 0 solid transparent;
+  border-bottom: 2px solid var(--borderColor);
+  border-radius: 0;
+  margin: 1.5em auto;
+  outline: none;
+  padding: 1em 0.5em 0.5em 2em;
+  transition: all 0.5s ease;
+  width: 100%;
+  color: var(--textColor);
+}
+
+.form-input:focus {
+  border-bottom: 2px solid var(--primary);
+}
+
+/* LoginPage */
+
+.loginBg {
+  height: 100vh;
+  flex-direction: column;
+  background-color: var(--bodyBg);
+}
+
+.loginDiv {
+  background-color: var(--whiteColor);
+  width: 25vw;
+  padding: 3.5rem;
+  text-align: center;
+  box-shadow: var(--shadowColor) 0px 7px 29px 0px;
+}
+
+.loginIcon {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  color: var(--primary);
+}
+
+.pswIcon {
+  position: absolute;
+  right: 0;
+  bottom: 40px;
+  color: var(--primary);
+  cursor: pointer;
+}
