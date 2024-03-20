@@ -7,20 +7,26 @@
   --shadowColor: rgba(100, 100, 111, 0.2);
   --textColor: #565656;
   --borderColor: #e6e6e6;
+  --sidebarTextColor: #202224;
 }
 
 a {
   text-decoration: none;
 }
 
+body {
+  background-color: var(--bodyBg);
+}
+
 .cusBtn {
-  background-color: var(--thirdColor);
+  background-color: var(--primary);
   font-size: 14px;
   font-weight: bold;
   color: var(--whiteColor);
   padding: 8px 25px;
   border-radius: 50px;
   width: fit-content;
+  cursor: pointer;
 }
 
 .cusBtn:hover {
@@ -72,4 +78,75 @@ a {
   bottom: 40px;
   color: var(--primary);
   cursor: pointer;
+}
+
+/* Sidebar */
+.customSidebar {
+  padding: 15px 0;
+  background-color: var(--whiteColor);
+}
+
+.customSidebar .ps-sidebar-container {
+  background-color: var(--whiteColor);
+  display: flex;
+  flex-direction: column;
+}
+
+.customSidebar .ps-menu-root {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.customSidebar .ps-menuitem-root {
+  font-size: 14px !important;
+  color: var(--sidebarTextColor);
+}
+
+.customSidebar .ps-menu-button:hover {
+  background-color: unset !important;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.customSidebar .ps-menu-icon {
+  margin-right: 10px;
+  margin-left: 0;
+  width: 15px;
+  min-width: 15px;
+}
+
+.customSidebar .ps-menu-label {
+  font-weight: 500;
+}
+
+.customSidebar .ps-menu-button {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.sidebarActive {
+  background-color: var(--primary);
+  color: var(--whiteColor) !important;
+  border-radius: 5px;
+}
+
+.sidebarActive .ps-menu-button:hover {
+  background-color: unset !important;
+  color: var(--whiteColor);
+  font-weight: normal;
+}
+
+.sidebarActive::before {
+  content: "";
+  width: 5px;
+  height: 100%;
+  background-color: var(--primary);
+  position: absolute;
+  left: -35px;
+  border-radius: 0 5px 5px 0;
+}
+
+.sidebarImg {
+  height: auto;
+  width: 60%;
 }
