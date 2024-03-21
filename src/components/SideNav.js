@@ -5,12 +5,15 @@ import koiLogo from "../assets/images/koiLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
-const settingLink = "/dashboard/settings";
-
 function SideNav(props) {
-  //   const { collapseSidebar, collapsed } = useProSidebar();
   return (
-    <Sidebar className="customSidebar">
+    <Sidebar
+      className={
+        "customSidebar " +
+        (props.sidebarCollapsed ? "collapseMargin" : "marginCustomBar")
+      }
+      collapsed={props.sidebarCollapsed}
+    >
       <div className="d-flex justify-content-center mb-4">
         <img src={koiLogo} alt="Company" className="sidebarImg" />
       </div>

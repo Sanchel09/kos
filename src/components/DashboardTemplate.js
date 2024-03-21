@@ -23,6 +23,12 @@ class DashboardTemplate extends Component {
     super(props);
   }
   state = {
+    selectedMenu: {
+      name: "Dashboard",
+      iconName: faGauge,
+      link: "/dashboard",
+      display: true,
+    },
     menus: [
       {
         name: "Dashboard",
@@ -67,10 +73,15 @@ class DashboardTemplate extends Component {
       iconName: faGears,
       link: "/dashboard/settings",
     },
+    sidebarCollapsed: false,
   };
 
   handleClick = (menu) => {
     this.setState({ selectedMenu: menu, parentMenu: null });
+  };
+
+  toggleSidebar = () => {
+    this.setState({ sidebarCollapsed: !this.state.sidebarCollapsed });
   };
 
   render() {
@@ -80,9 +91,13 @@ class DashboardTemplate extends Component {
           menus={this.state.menus}
           handleClick={this.handleClick}
           settingMenu={this.state.settingMenu}
+          sidebarCollapsed={this.state.sidebarCollapsed}
         />
         <div style={{ flex: 1, height: "100vh", overflow: "auto" }}>
-          <Header selectedMenu={this.state.selectedMenu}></Header>
+          <Header
+            selectedMenu={this.state.selectedMenu}
+            toggleSidebar={this.toggleSidebar}
+          ></Header>
           <DashboardRoutes></DashboardRoutes>
         </div>
       </div>

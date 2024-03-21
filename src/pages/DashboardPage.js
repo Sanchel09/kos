@@ -6,7 +6,7 @@ class DashboardPage extends Component {
   }
   state = {};
   render() {
-    return <div>Here will be dashboard page</div>;
+    return <div>Dasboard</div>;
   }
 }
 
