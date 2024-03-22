@@ -2,12 +2,18 @@
   --primary: #25628f;
   --secondary: #f36d38;
   --thirdColor: #2dbfcd;
+  --fourthColor: #13deb9;
+  --fifthColor: #c4a580;
   --bodyBg: #f5f6fa;
   --whiteColor: #fff;
   --shadowColor: rgba(100, 100, 111, 0.2);
   --textColor: #565656;
   --borderColor: #e6e6e6;
   --sidebarTextColor: #202224;
+  --progressBgColor: #f36d3820;
+  --progressBg1Color: #25628f20;
+  --progressBg2Color: #2dbfcd20;
+  --progressBg3Color: #13deb920;
 }
 
 a {
@@ -47,6 +53,14 @@ body {
 
 .form-input:focus {
   border-bottom: 2px solid var(--primary);
+}
+
+.btnColorSecondary {
+  background-color: var(--secondary) !important;
+}
+
+.btnColorSecondary:hover {
+  background-color: var(--primary) !important;
 }
 
 /* LoginPage */
@@ -288,4 +302,152 @@ body {
 .ps-collapsed {
   width: 50px !important;
   min-width: 50px !important;
+}
+
+/* Dashboard Page */
+.dataContainerBox {
+  background-color: var(--whiteColor);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.summaryBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.customMargin {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.contentTitle {
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.summaryCount {
+  font-size: 48px;
+  font-weight: bold;
+  opacity: 50%;
+  margin-bottom: 0;
+}
+
+.summaryColor0 {
+  color: var(--primary);
+}
+
+.summaryColor1 {
+  color: var(--secondary);
+}
+
+.summaryColor2 {
+  color: var(--thirdColor);
+}
+
+.summaryIcons {
+  font-size: 6rem;
+  opacity: 30%;
+}
+
+.progressColor0 {
+  background-color: var(--secondary) !important;
+}
+
+.progressColor1 {
+  background-color: var(--primary);
+}
+
+.progressColor2 {
+  background-color: var(--thirdColor);
+}
+
+.progressColor3 {
+  background-color: var(--fourthColor);
+}
+
+.progressTitle {
+  color: var(--sidebarTextColor);
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.progressCount {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.countColor0 {
+  color: var(--secondary);
+}
+
+.countColor1 {
+  color: var(--primary);
+}
+
+.countColor2 {
+  color: var(--thirdColor);
+}
+
+.countColor3 {
+  color: var(--fourthColor);
+}
+
+.progress {
+  margin-bottom: 1.5rem;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 10px;
+  border-radius: 25px;
+}
+
+.progressBgColor0 {
+  background-color: var(--progressBgColor);
+}
+
+.progressBgColor1 {
+  background-color: var(--progressBg1Color);
+}
+
+.progressBgColor2 {
+  background-color: var(--progressBg2Color);
+}
+
+.progressBgColor3 {
+  background-color: var(--progressBg3Color);
+}
+
+.eventDateBox {
+  background-color: var(--progressBg1Color);
+  border-radius: 8px;
+  padding: 5px 25px;
+  margin-right: 1.5rem;
+  text-align: center;
+}
+
+.eventDateMonth {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.eventDate {
+  color: var(--primary);
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.eventTime {
+  color: var(--fifthColor);
+  font-size: 13px;
 }
