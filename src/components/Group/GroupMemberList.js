@@ -19,36 +19,38 @@ const GroupMemberList = (props) => {
                     <tbody>
                       {item.members.length > 0
                         ? item.members.map((member, mIdx) => {
-                            return (
-                              <tr key={mIdx}>
-                                <td width={"80%"}>
-                                  <div className="groupContent">
-                                    <img
-                                      src={member.image}
-                                      className="tableUserImg"
-                                      alt="member"
-                                    />
-                                    {member.name}
-                                  </div>
-                                </td>
-                                <td>
-                                  <span
-                                    className={
-                                      member.isActive
-                                        ? "activeSpan"
-                                        : "inactiveSpan"
-                                    }
-                                  >
-                                    {member.isActive ? "Active" : "In active"}
-                                  </span>
-                                </td>
-                                <td>
-                                  <span className="flagSpan">
-                                    {member.flagStatus}
-                                  </span>
-                                </td>
-                              </tr>
-                            );
+                            if (mIdx <= 3) {
+                              return (
+                                <tr key={mIdx}>
+                                  <td width={"80%"}>
+                                    <div className="groupContent">
+                                      <img
+                                        src={member.image}
+                                        className="tableUserImg"
+                                        alt="member"
+                                      />
+                                      {member.name}
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <span
+                                      className={
+                                        member.isActive
+                                          ? "activeSpan"
+                                          : "inactiveSpan"
+                                      }
+                                    >
+                                      {member.isActive ? "Active" : "In active"}
+                                    </span>
+                                  </td>
+                                  <td>
+                                    <span className="flagSpan">
+                                      {member.flagStatus}
+                                    </span>
+                                  </td>
+                                </tr>
+                              );
+                            }
                           })
                         : "No members yet"}
                     </tbody>

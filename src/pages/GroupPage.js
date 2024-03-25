@@ -3,6 +3,7 @@ import userImg from "../assets/images/userImg.jpg";
 import userImg1 from "../assets/images/userImg2.jpg";
 import GroupList from "../components/Group/GroupList";
 import GroupMemberList from "../components/Group/GroupMemberList";
+import GroupMessage from "../components/Group/GroupMessage";
 
 class GroupPage extends Component {
   state = {
@@ -97,7 +98,45 @@ class GroupPage extends Component {
         ],
       },
     ],
+    selectedGroup: "",
+    message: "",
+    groupChat: [
+      {
+        user: "Me",
+        userId: 1,
+        message: "Hello Everyone",
+        userImg: userImg,
+        date: "2024-03-24T10:12:50.500Z",
+      },
+      {
+        user: "John Doe",
+        userId: 13,
+        message: "Hello Sir. How are you ?",
+        userImg: userImg,
+        date: "2024-03-24T10:12:50.500Z",
+      },
+      {
+        user: "Suman",
+        userId: 12,
+        message: "Hello",
+        userImg: userImg,
+        date: "2024-03-25T10:12:50.500Z",
+      },
+      {
+        user: "Me",
+        userId: 1,
+        message: "There will be a small meeting regarding your work today.",
+        userImg: userImg,
+        date: "2024-03-24T10:12:50.500Z",
+      },
+    ],
   };
+
+  handleChange = (e) => {
+    let { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
   render() {
     return (
       <div className="container-fluid customMargin">
@@ -111,9 +150,13 @@ class GroupPage extends Component {
             <GroupMemberList groupMembers={this.state.groupMembers} />
           </div>
           <div className="col-md-6">
-            <div className="dataContainerBox">
-              <p className="contentTitle">Group A</p>
-            </div>
+            <GroupMessage
+              groupChat={this.state.groupChat}
+              handleChange={this.handleChange}
+              selectedGroup={this.state.selectedGroup}
+              message={this.state.message}
+              groupList={this.state.groupList}
+            />
           </div>
         </div>
       </div>
