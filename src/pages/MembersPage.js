@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import userImg from "../assets/images/userImg.jpg";
 import userImg1 from "../assets/images/userImg2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCameraAlt, faPaperclip } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCameraAlt,
+  faEllipsis,
+  faPaperclip,
+} from "@fortawesome/free-solid-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import moment from "moment";
 
@@ -17,21 +21,18 @@ class MembersPage extends Component {
           {
             name: "Suman",
             image: userImg,
-            isActive: true,
-            flagStatus: "Flag",
+            userType: "Instructor",
           },
           {
             name: "User 1",
             image: userImg1,
-            isActive: true,
-            flagStatus: "At risk",
+            userType: "Student",
           },
           ,
           {
             name: "John Doe",
             image: userImg,
-            isActive: true,
-            flagStatus: "Flag",
+            userType: "Student",
           },
         ],
       },
@@ -43,21 +44,18 @@ class MembersPage extends Component {
           {
             name: "Jane Doe",
             image: userImg1,
-            isActive: true,
-            flagStatus: "Flag",
+            userType: "Instructor",
           },
           {
             name: "Avilash",
             image: userImg,
-            isActive: false,
-            flagStatus: "Flag",
+            userType: "Student",
           },
           ,
           {
             name: "Suman",
             image: userImg1,
-            isActive: false,
-            flagStatus: "Flag",
+            userType: "Admin",
           },
         ],
       },
@@ -94,11 +92,31 @@ class MembersPage extends Component {
     ],
     selectedGroup: "",
     message: "",
+    selectedGroupObject: null,
   };
 
   handleChange = (e) => {
     let { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      if (name === "selectedGroup") {
+        let choosenGroup = this.state.groupList.filter(
+          (el) => el.groupName === value
+        );
+        this.setState({ selectedGroupObject: choosenGroup[0] });
+      }
+    });
+  };
+
+  componentDidMount() {
+    this.config();
+  }
+
+  config = () => {
+    this.setState({ selectedGroupObject: this.state.groupList[0] }, () => {
+      this.setState({
+        selectedGroup: this.state.selectedGroupObject.groupName,
+      });
+    });
   };
 
   render() {
@@ -201,13 +219,132 @@ class MembersPage extends Component {
                 </div>
               </div>
               <p className="groupDesc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                facilisis mi vitae ex accumsan laoreet. Fusce dapibus fringilla
-                feugiat. Vestibulum sed tristique orci. Pellentesque pretium
-                felis ut congue consequat. Ut et nisi est. Proin eget nisl
-                interdum, sagittis ex sed, viverra quam. Fusce semper placerat
-                felis, at egestas ligula
+                {this.state.selectedGroupObject
+                  ? this.state.selectedGroupObject.description
+                  : ""}
               </p>
+              <div className="accordion" id="accordionExample">
+                <div className="accordion-item">
+                  <h2 className="accordion-header">
+                    <button
+                      className="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      View Photos and Files
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse show"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <strong>This is the first item's accordion body.</strong>{" "}
+                      It is shown by default, until the collapse plugin adds the
+                      appropriate classes that we use to style each element.
+                      These classes control the overall appearance, as well as
+                      the showing and hiding via CSS transitions. You can modify
+                      any of this with custom CSS or overriding our default
+                      variables. It's also worth noting that just about any HTML
+                      can go within the <code>.accordion-body</code>, though the
+                      transition does limit overflow.
+                    </div>
+                  </div>
+                </div>
+                <div className="accordion-item">
+                  <h2 className="accordion-header">
+                    <button
+                      className="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                      Group Members
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTwo"
+                    className="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div className="accordion-body">
+                      {this.state.selectedGroupObject
+                        ? this.state.selectedGroupObject.members.length > 0
+                          ? this.state.selectedGroupObject.members.map(
+                              (item, idx) => {
+                                return (
+                                  <div
+                                    key={idx}
+                                    className="d-flex justify-content-between mb-3"
+                                  >
+                                    <div className="d-flex align-items-center">
+                                      <img
+                                        src={item.image}
+                                        alt="member"
+                                        className="userMessageIcon me-3"
+                                      ></img>
+                                      <div>
+                                        <p className="memberLabel">
+                                          {item.name}
+                                        </p>
+                                        <p className="memberType">
+                                          {item.userType}
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <FontAwesomeIcon
+                                        icon={faEllipsis}
+                                        className="memberMenu"
+                                      />
+                                    </div>
+                                  </div>
+                                );
+                              }
+                            )
+                          : null
+                        : null}
+                    </div>
+                  </div>
+                </div>
+                <div className="accordion-item">
+                  <h2 className="accordion-header">
+                    <button
+                      className="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      Privacy & Support
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseThree"
+                    className="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div className="accordion-body">
+                      <strong>This is the third item's accordion body.</strong>{" "}
+                      It is hidden by default, until the collapse plugin adds
+                      the appropriate classes that we use to style each element.
+                      These classes control the overall appearance, as well as
+                      the showing and hiding via CSS transitions. You can modify
+                      any of this with custom CSS or overriding our default
+                      variables. It's also worth noting that just about any HTML
+                      can go within the <code>.accordion-body</code>, though the
+                      transition does limit overflow.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
