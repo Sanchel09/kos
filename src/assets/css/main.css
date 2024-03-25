@@ -661,3 +661,21 @@ body {
   font-size: 10px;
   /* font-weight: 300; */
 }
+
+/* Members Page */
+
+.messageLine {
+  border-top: 1px solid #797c7b;
+}
+
+.fullChatBox {
+  height: 61vh;
+}
+
+.groupDesc {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 28px;
+  margin-top: 1.5rem;
+}

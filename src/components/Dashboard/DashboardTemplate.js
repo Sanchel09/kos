@@ -61,8 +61,8 @@ class DashboardTemplate extends Component {
       {
         name: "Members",
         iconName: faUsers,
-        link: "/dashboard/members",
-        display: checkStudent(demoUser) ? true : false,
+        link: "/dashboard/membersPage",
+        display: checkStudent(demoUser) || checkAdmin(demoUser) ? true : false,
       },
     ],
     settingMenu: {
