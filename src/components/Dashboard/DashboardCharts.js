@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -41,10 +41,17 @@ const lineOptions = {
   plugins: {
     legend: {
       position: "top",
+      align: "start",
+      labels: {
+        usePointStyle: true,
+        pointStyle: "circle",
+        padding: 50,
+      },
     },
-    title: {
-      display: true,
-      text: "Chart.js Line Chart",
+  },
+  elements: {
+    point: {
+      radius: 0,
     },
   },
 };
@@ -53,21 +60,31 @@ const lineData = {
   labels,
   datasets: [
     {
-      label: "Dataset 1",
+      label: "Active",
       data: [1000, 1500, 2000, 1800, 1500, 2000, 2200],
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      borderColor: "#2dbfcd",
+      backgroundColor: "#2dbfcd",
+      tension: 0.3,
     },
     {
-      label: "Dataset 2",
+      label: "Passive",
       data: [500, 1300, 2500, 2200, 3000, 2500, 2800],
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
+      borderColor: "#f36d38",
+      backgroundColor: "#f36d38",
+      tension: 0.3,
     },
   ],
 };
 
 const DashboardCharts = () => {
+  const [duration, setDuration] = useState("thisWeek");
+
+  const handleDurationChange = (e) => {
+    let { value } = e.target;
+    setDuration(value);
+    //reload chart data on changing this value
+  };
+
   return (
     <div className="row" style={{ marginBottom: "1.5rem" }}>
       <div className="col-md-4">
@@ -101,9 +118,25 @@ const DashboardCharts = () => {
       </div>
       <div className="col-md-8">
         <div className="dataContainerBox">
-          <p className="contentTitle mb-0">Performance</p>
-          <p className="contentSubtitle">Overview</p>
-          <Line data={lineData} options={lineOptions} />
+          <div className="d-flex justify-content-between">
+            <div>
+              <p className="contentTitle mb-0">Performance</p>
+              <p className="contentSubtitle mb-0">Overview</p>
+            </div>
+            <div>
+              <select
+                name="duration"
+                value={duration}
+                className="form-select"
+                onChange={handleDurationChange}
+              >
+                <option value="thisWeek">This Week</option>
+                <option value="thisMonth">This Month</option>
+                <option value="thisYear">This Year</option>
+              </select>
+            </div>
+          </div>
+          <Line data={lineData} options={lineOptions} height={"100%"} />
         </div>
       </div>
     </div>
