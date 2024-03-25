@@ -1,9 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 
 class AppButton extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = {};
   render() {
     let props = this.props;
@@ -12,6 +10,9 @@ class AppButton extends Component {
         className={"cusBtn " + (props.customStyle ? props.customStyle : "")}
         onClick={props.onClick}
       >
+        {props.icon !== "" ? (
+          <FontAwesomeIcon icon={props.icon} className="btnIcon" />
+        ) : null}
         {props.name}
       </div>
     );

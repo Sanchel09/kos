@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import DashboardRoutes from "../routes/DashboardRoutes";
-import SideNav from "./SideNav";
+import DashboardRoutes from "../../routes/DashboardRoutes";
+import SideNav from "../SideNav";
 import {
   faChalkboardTeacher,
   faChartLine,
@@ -13,15 +13,12 @@ import {
   checkAdmin,
   checkInstructor,
   checkStudent,
-} from "../utils/Permissions";
-import Header from "./Header";
+} from "../../utils/Permissions";
+import Header from "../Header";
 
 const demoUser = "Admin";
 
 class DashboardTemplate extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     selectedMenu: {
       name: "Dashboard",
@@ -45,7 +42,7 @@ class DashboardTemplate extends Component {
       {
         name: "Groups",
         iconName: faUsers,
-        link: "/dashboard/schools",
+        link: "/dashboard/groupPage",
         display:
           checkAdmin(demoUser) || checkInstructor(demoUser) ? true : false,
       },

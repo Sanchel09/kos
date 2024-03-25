@@ -14,6 +14,13 @@
   --progressBg1Color: #25628f20;
   --progressBg2Color: #2dbfcd20;
   --progressBg3Color: #13deb920;
+  --errorColor: #c70000;
+  --activeColor: #00b69b;
+  --activeBgColor: #00b69b20;
+  --riskColor: #b60000;
+  --riskBgColor: #b6000020;
+  --inactiveColor: #ffbb00;
+  --inactiveBgColor: #ffbb0020;
 }
 
 a {
@@ -22,6 +29,11 @@ a {
 
 body {
   background-color: var(--bodyBg);
+}
+
+.btnIcon {
+  font-size: 11px;
+  margin-right: 5px;
 }
 
 .cusBtn {
@@ -473,4 +485,101 @@ body {
   font-size: 35px;
   font-weight: 500;
   text-align: center;
+}
+
+/* Group Page */
+.addBtnColor {
+  background-color: var(--thirdColor);
+}
+
+.customTable thead tr th {
+  color: #858585;
+  font-weight: 600;
+}
+
+.customTable tbody tr td {
+  color: var(--textColor);
+  vertical-align: middle;
+  padding: 1rem 0.5rem;
+}
+
+.customTable .tableData {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.tableUserImg {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.actionIcons {
+  padding: 3px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.editIcon {
+  color: var(--thirdColor);
+}
+
+.deleteIcon {
+  color: var(--errorColor);
+}
+
+.chatIcon {
+  color: var(--primary);
+}
+
+.groupMemberBox {
+  background-color: #25628f09;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.groupTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.groupContent {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
+}
+
+.activeSpan {
+  background-color: var(--activeBgColor);
+  padding: 5px 10px;
+  color: var(--activeColor);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.inactiveSpan {
+  background-color: var(--inactiveBgColor);
+  padding: 5px 10px;
+  color: var(--inactiveColor);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.flagSpan {
+  background-color: var(--riskBgColor);
+  padding: 5px 10px;
+  color: var(--riskColor);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.groupTable {
+  width: 100%;
 }
