@@ -130,11 +130,24 @@ class GroupPage extends Component {
         date: "2024-03-24T10:12:50.500Z",
       },
     ],
+    selectedGroupObject: null,
   };
 
   handleChange = (e) => {
     let { name, value } = e.target;
     this.setState({ [name]: value });
+  };
+
+  componentDidMount() {
+    this.config();
+  }
+
+  config = () => {
+    this.setState({ selectedGroupObject: this.state.groupList[0] }, () => {
+      this.setState({
+        selectedGroup: this.state.selectedGroupObject.groupName,
+      });
+    });
   };
 
   render() {
