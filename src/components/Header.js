@@ -8,12 +8,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import userImg from "../assets/images/userImg.jpg";
+import NotificationPanel from "./NotificationPanel";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-  state = {};
+  handleNotificationClick = () => {
+    let panel = document.getElementById("nPanel");
+    panel.classList.toggle("panelHeight");
+  };
+
   render() {
     return (
       <header className="headerDiv">
@@ -36,9 +38,16 @@ class Header extends Component {
         <div className="emptyDiv"></div>
         <div className="userInfoDiv">
           <FontAwesomeIcon icon={faEnvelope} className="mailIcon" />
-          <div className="position-relative" style={{ cursor: "pointer" }}>
+          <div
+            className="position-relative"
+            style={{ cursor: "pointer" }}
+            onClick={this.handleNotificationClick}
+          >
             <FontAwesomeIcon icon={faBell} className="bellIcon" />
             <span class="badge headerBadge">5</span>
+            <div className="notificationPanel" id="nPanel">
+              <NotificationPanel></NotificationPanel>
+            </div>
           </div>
           <span
             className="dropdown d-flex align-items-center"
