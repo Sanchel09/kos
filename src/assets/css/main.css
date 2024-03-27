@@ -820,3 +820,36 @@ body {
   cursor: pointer;
   color: var(--primary);
 }
+
+/* Error Page */
+.pageErrorImage {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  color: var(--primary);
+}
+
+.errorContent {
+  padding-top: 18rem;
+  padding: 15rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.errorPageTitle {
+  text-align: center;
+  font-weight: 900;
+  font-size: 50px;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.errorPageDesc {
+  margin: auto;
+  text-align: center;
+  color: var(--secondary);
+  font-size: 24px;
+}
