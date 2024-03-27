@@ -20,12 +20,7 @@ const demoUser = "Admin";
 
 class DashboardTemplate extends Component {
   state = {
-    selectedMenu: {
-      name: "Dashboard",
-      iconName: faGauge,
-      link: "/dashboard",
-      display: true,
-    },
+    selectedMenu: null,
     menus: [
       {
         name: "Dashboard",
@@ -81,6 +76,16 @@ class DashboardTemplate extends Component {
     this.setState({ sidebarCollapsed: !this.state.sidebarCollapsed });
   };
 
+  componentDidMount = () => {
+    this.config();
+  };
+
+  config = () => {
+    let pathname = window.location.pathname;
+    let menus = this.state.menus.filter((el) => el.link === pathname);
+    this.setState({ selectedMenu: menus[0] });
+  };
+
   render() {
     return (
       <div style={{ display: "flex" }}>
@@ -91,10 +96,10 @@ class DashboardTemplate extends Component {
           sidebarCollapsed={this.state.sidebarCollapsed}
         />
         <div style={{ flex: 1, height: "100vh", overflow: "auto" }}>
-          <Header
-            selectedMenu={this.state.selectedMenu}
-            toggleSidebar={this.toggleSidebar}
-          ></Header>
+          <Header toggleSidebar={this.toggleSidebar}></Header>
+          <p className="pageTitle">
+            {this.state.selectedMenu ? this.state.selectedMenu.name : null}
+          </p>
           <DashboardRoutes></DashboardRoutes>
         </div>
       </div>
