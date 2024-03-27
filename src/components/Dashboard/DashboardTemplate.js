@@ -44,7 +44,7 @@ class DashboardTemplate extends Component {
       {
         name: "Instructors",
         iconName: faChalkboardTeacher,
-        link: "/dashboard/user",
+        link: "/dashboard/instructorPage",
         display: checkAdmin(demoUser) ? true : false,
       },
       {
@@ -57,7 +57,7 @@ class DashboardTemplate extends Component {
         name: "Members",
         iconName: faUsers,
         link: "/dashboard/membersPage",
-        display: checkStudent(demoUser) || checkAdmin(demoUser) ? true : false,
+        display: checkStudent(demoUser) ? true : false,
       },
     ],
     settingMenu: {

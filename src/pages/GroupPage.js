@@ -131,6 +131,7 @@ class GroupPage extends Component {
       },
     ],
     selectedGroupObject: null,
+    addGroupModal: false,
   };
 
   handleChange = (e) => {
@@ -150,12 +151,20 @@ class GroupPage extends Component {
     });
   };
 
+  toggleAddGroupModal = () => {
+    this.setState({ addGroupModal: !this.state.addGroupModal });
+  };
+
   render() {
     return (
       <div className="container-fluid customMargin">
         <div className="row" style={{ marginBottom: "1.5rem" }}>
           <div className="col">
-            <GroupList groupList={this.state.groupList} />
+            <GroupList
+              groupList={this.state.groupList}
+              addGroupModal={this.state.addGroupModal}
+              toggleAddGroupModal={this.toggleAddGroupModal}
+            />
           </div>
         </div>
         <div className="row" style={{ marginBottom: "1.5rem" }}>

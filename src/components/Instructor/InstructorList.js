@@ -1,66 +1,47 @@
 import React from "react";
 import AppButton from "../AppButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { faRocketchat } from "@fortawesome/free-brands-svg-icons";
 import ModalWindow from "../../utils/ModalWindow";
-import GroupAddModal from "./GroupAddModal";
+import InstructorAddModal from "./InstructorAddModal";
 
-const GroupList = (props) => {
+const InstructorList = (props) => {
   return (
     <div className="dataContainerBox">
       <AppButton
-        name="Add Group"
+        name="Add Instructor"
         customStyle="addBtnColor"
         icon={faPlus}
-        onClick={props.toggleAddGroupModal}
+        onClick={props.toggleInstructorModal}
       />
       <table className="table customTable mt-3">
         <thead>
           <tr>
-            <th>Group Name</th>
             <th>Instructor</th>
-            <th>Leader</th>
-            <th>Contact</th>
+            <th>Email</th>
+            <th>Phone</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {props.groupList.length > 0 ? (
-            props.groupList.map((item, idx) => {
+          {props.instructorList.length > 0 ? (
+            props.instructorList.map((item, idx) => {
               return (
                 <tr key={idx}>
-                  <td className="tableData" width={"40%"}>
-                    {item.groupName}
-                  </td>
-                  <td>
+                  <td className="tableData" width={"50%"}>
                     <span>
                       <img
-                        src={item.instructor.image}
+                        src={item.image}
                         className="tableUserImg"
                         alt="instructor"
                       />
                     </span>
-                    {item.instructor.name}
+                    {item.name}
                   </td>
-                  <td>
-                    <span>
-                      <img
-                        src={item.leader.image}
-                        className="tableUserImg"
-                        alt="leader"
-                      />
-                    </span>
-                    {item.leader.name}
-                  </td>
-                  <td>
-                    <strong>Phone: </strong>
-                    {item.leader.phone}
-                    <br></br>
-                    <strong>Email: </strong>
-                    {item.leader.email}
-                  </td>
+                  <td>{item.email}</td>
+                  <td>{item.phone}</td>
                   <td>
                     <span className="d-flex justify-content-between">
                       <FontAwesomeIcon
@@ -84,23 +65,20 @@ const GroupList = (props) => {
             })
           ) : (
             <tr>
-              <td colSpan={5}>No groups found</td>
+              <td colSpan={5}>No Instructors found</td>
             </tr>
           )}
         </tbody>
       </table>
-      <div className="d-flex justify-content-end">
-        <AppButton name="View All" customStyle="btnColorSecondary" />
-      </div>
       <ModalWindow
-        modal={props.addGroupModal}
-        toggleModal={props.toggleAddGroupModal}
-        modalHeader="Add New Group"
+        modal={props.instructorModal}
+        toggleModal={props.toggleInstructorModal}
+        modalHeader="Add New Instructor"
         size={`lg`}
-        modalBody={<GroupAddModal />}
+        modalBody={<InstructorAddModal />}
       />
     </div>
   );
 };
 
-export default GroupList;
+export default InstructorList;
