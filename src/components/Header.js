@@ -78,8 +78,8 @@ class Header extends Component {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
+                <a className="dropdown-item" href="http://localhost:3000">
+                  Log Out
                 </a>
               </li>
             </ul>

@@ -74,7 +74,8 @@ function SideNav(props) {
           }
           onClick={() => {
             localStorage.clear();
-            window.location.reload();
+            // window.location.reload();
+            window.location.href = "http://localhost:3000/";
           }}
         >
           Log Out
