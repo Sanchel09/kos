@@ -11,6 +11,21 @@ class InstructorAddModal extends Component {
     imageFile: null,
   };
 
+  componentDidMount() {
+    if (this.props.edit) {
+      this.configData();
+    }
+  }
+
+  configData = () => {
+    let editData = this.props.editData;
+    this.setState({
+      name: editData.name,
+      email: editData.email,
+      phone: editData.phone,
+    });
+  };
+
   handleChange = (e) => {
     let { name, value } = e.target;
     this.setState({ [name]: value });
@@ -33,6 +48,10 @@ class InstructorAddModal extends Component {
 
   handleSubmit = () => {
     //API call to store group
+  };
+
+  handleUpdate = () => {
+    //API call to update group
   };
 
   removeImage = () => {
@@ -136,7 +155,7 @@ class InstructorAddModal extends Component {
           <AppButton
             name="Submit"
             customStyle="btnColorSecondary"
-            onChange={this.handleSubmit}
+            onChange={this.props.edit ? this.handleUpdate : this.handleSubmit}
           />
         </div>
       </div>

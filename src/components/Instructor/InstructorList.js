@@ -47,11 +47,13 @@ const InstructorList = (props) => {
                       <FontAwesomeIcon
                         icon={faPenToSquare}
                         className="actionIcons editIcon"
+                        onClick={() => props.editInstructor(item)}
                       />
                       |
                       <FontAwesomeIcon
                         icon={faTrashAlt}
                         className="actionIcons deleteIcon"
+                        onClick={() => props.deleteInstructor(idx)}
                       />
                       |
                       <FontAwesomeIcon
@@ -73,9 +75,11 @@ const InstructorList = (props) => {
       <ModalWindow
         modal={props.instructorModal}
         toggleModal={props.toggleInstructorModal}
-        modalHeader="Add New Instructor"
+        modalHeader={props.edit ? "Update Instructor" : "Add New Instructor"}
         size={`lg`}
-        modalBody={<InstructorAddModal />}
+        modalBody={
+          <InstructorAddModal editData={props.editData} edit={props.edit} />
+        }
       />
     </div>
   );

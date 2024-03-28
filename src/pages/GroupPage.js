@@ -160,7 +160,7 @@ class GroupPage extends Component {
   };
 
   toggleAddGroupModal = () => {
-    this.setState({ addGroupModal: !this.state.addGroupModal });
+    this.setState({ addGroupModal: !this.state.addGroupModal, edit: false });
   };
 
   deleteGroup = (idx) => {
