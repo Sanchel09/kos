@@ -13,12 +13,14 @@ class GroupPage extends Component {
         instructor: {
           name: "John Doe",
           image: userImg,
+          id: "1",
         },
         leader: {
           name: "User 5",
           image: userImg1,
           phone: "+12984456",
           email: "abc@gmail.com",
+          id: "1",
         },
       },
       {
@@ -26,12 +28,14 @@ class GroupPage extends Component {
         instructor: {
           name: "Jane Doe",
           image: userImg,
+          id: "2",
         },
         leader: {
           name: "User 1",
           image: userImg1,
           phone: "+12984456",
           email: "abc@gmail.com",
+          id: "2",
         },
       },
       {
@@ -39,12 +43,14 @@ class GroupPage extends Component {
         instructor: {
           name: "Mr. Brown",
           image: userImg,
+          id: "3",
         },
         leader: {
           name: "John Doe",
           image: userImg1,
           phone: "+12984456",
           email: "abc@gmail.com",
+          id: "3",
         },
       },
     ],
@@ -132,6 +138,8 @@ class GroupPage extends Component {
     ],
     selectedGroupObject: null,
     addGroupModal: false,
+    editData: null,
+    edit: false,
   };
 
   handleChange = (e) => {
@@ -155,6 +163,18 @@ class GroupPage extends Component {
     this.setState({ addGroupModal: !this.state.addGroupModal });
   };
 
+  deleteGroup = (idx) => {
+    let groupList = [...this.state.groupList];
+    groupList.splice(idx, 1);
+    this.setState({ groupList: groupList });
+  };
+
+  editGroup = (data) => {
+    this.setState({ editData: data, edit: true }, () => {
+      this.setState({ addGroupModal: !this.state.addGroupModal });
+    });
+  };
+
   render() {
     return (
       <div className="container-fluid customMargin">
@@ -164,6 +184,10 @@ class GroupPage extends Component {
               groupList={this.state.groupList}
               addGroupModal={this.state.addGroupModal}
               toggleAddGroupModal={this.toggleAddGroupModal}
+              deleteGroup={this.deleteGroup}
+              editGroup={this.editGroup}
+              editData={this.state.editData}
+              edit={this.state.edit}
             />
           </div>
         </div>

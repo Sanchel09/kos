@@ -66,11 +66,13 @@ const GroupList = (props) => {
                       <FontAwesomeIcon
                         icon={faPenToSquare}
                         className="actionIcons editIcon"
+                        onClick={() => props.editGroup(item)}
                       />
                       |
                       <FontAwesomeIcon
                         icon={faTrashAlt}
                         className="actionIcons deleteIcon"
+                        onClick={props.deleteGroup}
                       />
                       |
                       <FontAwesomeIcon
@@ -95,9 +97,11 @@ const GroupList = (props) => {
       <ModalWindow
         modal={props.addGroupModal}
         toggleModal={props.toggleAddGroupModal}
-        modalHeader="Add New Group"
+        modalHeader={props.edit ? "Update Group" : "Add New Group"}
         size={`lg`}
-        modalBody={<GroupAddModal />}
+        modalBody={
+          <GroupAddModal editData={props.editData} edit={props.edit} />
+        }
       />
     </div>
   );

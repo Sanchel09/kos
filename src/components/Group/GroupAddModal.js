@@ -20,6 +20,28 @@ class GroupAddModal extends Component {
     //API call to store group
   };
 
+  handleUpdate = () => {
+    //API call to update group
+  };
+
+  componentDidMount = () => {
+    if (this.props.edit) {
+      this.configData();
+    }
+  };
+
+  configData = () => {
+    let editData = this.props.editData;
+    this.setState({
+      groupName: editData.groupName,
+      instructor: editData.instructor.id,
+      leader: editData.leader.id,
+      phone: editData.leader.phone,
+      email: editData.leader.email,
+      groupDescription: "",
+    });
+  };
+
   render() {
     return (
       <div className="container-fluid">
@@ -120,7 +142,7 @@ class GroupAddModal extends Component {
           <AppButton
             name="Submit"
             customStyle="btnColorSecondary"
-            onChange={this.handleSubmit}
+            onChange={this.props.edit ? this.handleUpdate : this.handleSubmit}
           />
         </div>
       </div>
